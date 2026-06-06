@@ -1,0 +1,7 @@
+{
+  "name": "cfg-lang-analyzer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
