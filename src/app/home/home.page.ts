@@ -335,7 +335,8 @@ export class HomePage {
 
     if (!regexValid) {
       this.inputValid = false;
-      this.currentStatus = `REJECTED. ${this.causes.join(' ')}`;
+      this.currentStatus = `REJECTED
+      . ${this.causes.join(' ')}`;
       this.expression = '';
       return;
     }
