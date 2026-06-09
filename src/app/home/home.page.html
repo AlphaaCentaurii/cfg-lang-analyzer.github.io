@@ -1,20 +1,67 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="name-container">
+      <h1 class="name">CONTEXT-FREE GRAMMAR LANGUAGE ANALYZER</h1>
+    </div>
+
+    <div class="expression">
+
+      <ion-label>Expression:</ion-label>
+
+      <div class="input-container">
+        <ion-input
+          [(ngModel)]="expression"
+          placeholder="Enter Arithmetic Expression"
+          fill="outline">
+        </ion-input>
+
+        <ion-button id="start" (click)="startAnalyzer()">START</ion-button>
+        <ion-button id="clear" (click)="clearInput()">CLEAR</ion-button>
+      </div>
+
+    </div>
+
+    <div class="output">
+      <div class="status-container">
+        <h2>Input: {{ currentInput }}</h2>
+        <h2 [ngClass]="{'valid-status': inputValid, 'invalid-status': !inputValid}">
+          <span style="color: black">Status: </span>{{ currentStatus }}</h2>
+      </div>
+    </div>
+
+    <div class="grammar-derivation">
+      <div class="grammar-container">
+        <div id="grammar-name">
+          <h1 id="grammar"><b>G  R  A  M  M  A  R</b></h1>
+        </div>
+
+        <div class="derivations">
+          <h4><b>EXPR → </b><span id="derive">EXPR + TERM</span></h4>
+          <h4><b>EXPR → </b><span id="derive">EXPR - TERM</span></h4>
+          <h4><b>EXPR → </b><span id="derive">TERM</span></h4>
+          <br>
+          <h4><b>TERM → </b><span id="derive">TERM * FACTOR</span></h4>
+          <h4><b>TERM → </b><span id="derive">TERM / FACTOR</span></h4>
+          <h4><b>TERM → </b><span id="derive">FACTOR</span></h4>
+          <br>
+          <h4><b>FACTOR → </b><span id="derive">(EXPR)</span></h4>
+          <h4><b>FACTOR → </b><span id="derive">NUM</span></h4>
+          <br>
+          <h4><b>NUM → </b><span id="derive">NUM DIGIT</span></h4>
+          <h4><b>NUM → </b><span id="derive">DIGIT</span></h4>
+          <br>
+          <h4><b>EXPR → </b><span id="derive">0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9</span></h4>
+        </div>
+      </div>
+      <div class="process-container" >
+        <div id="grammar-name">
+          <h1 id="grammar"><b>D E R I V A T I O N S</b></h1>
+        </div>
+        <div id="steps" *ngFor="let step of derivationSteps"> 
+          <h5>{{ step }}</h5></div>
+      </div>
+    </div>
   </div>
 </ion-content>
